@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/aschuch/Argonaut.svg)](https://travis-ci.org/aschuch/Argonaut)
 ![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
-![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg)
+![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20watchOS%20%7C%20tvOS-lightgrey.svg)
 
 A collection of (reactive) JSON parsing helpers for the [Argo](https://github.com/thoughtbot/Argo) JSON parser.
@@ -31,9 +31,9 @@ let tasks: [Task]? = decodeData(responseData)
 let tasksDecoded: Decoded<[Task]>? = decodeData(responseData)
 ```
 
-### Reactive Cocoa
+### ReactiveSwift
 
-Argonaut also supports JSON mapping for ReactiveCocoa 4.0 (`Signal and SignalProducer`).
+Argonaut also supports JSON mapping for ReactiveSwift 2.0 (`Signal and SignalProducer`).
 
 ```swift
 // Create models from JSON dictionary
@@ -55,6 +55,7 @@ Current Swift compatibility breakdown:
 
 | Swift Version | Framework Version |
 | ------------- | ----------------- |
+| 4.0           | 5.x               |
 | 3.0           | 4.x               |
 | 2.3           | 3.x               |
 | 2.2           | 2.x               |
@@ -68,7 +69,7 @@ Current Swift compatibility breakdown:
 Add the following line to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile).
 
 ```
-github "aschuch/Argonaut”
+github "aloco/Argonaut”
 ```
 
 Then run `carthage update`.
