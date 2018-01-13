@@ -19,7 +19,7 @@ class Task: NSObject {
     }
 }
 
-extension Task: Decodable {
+extension Task: Argo.Decodable {
     class func create(_ name: String) -> Task {
         return self.init(name: name)
     }

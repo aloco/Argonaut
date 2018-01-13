@@ -63,7 +63,7 @@ class JSONMappingTests: XCTestCase {
         let userDecoded: Decoded<User>? = decodeData(mockData.invalidUserJSONData)
 
         XCTAssert(tasks == nil, "decodeData should return nil tasks")
-        XCTAssert(tasksDecoded?.value == nil, "decodeData decoded should return nil tasks \(tasksDecoded)")
+        XCTAssert(tasksDecoded?.value == nil, "decodeData decoded should return nil tasks \(String(describing: tasksDecoded))")
         XCTAssert(user == nil, "decodeData should return nil user")
         XCTAssert(userDecoded?.value == nil, "decodeData decoded should return nil user")
     }

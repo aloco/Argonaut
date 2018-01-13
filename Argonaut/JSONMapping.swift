@@ -15,7 +15,7 @@ import Argo
 ///
 /// - parameter JSON: data
 /// - returns: The decoded object
-public func decodeData<T: Decodable>(_ data: Data?) -> T? where T == T.DecodedType {
+public func decodeData<T: Argo.Decodable>(_ data: Data?) -> T? where T == T.DecodedType {
     if let json = JSONWithData(data) {
         return decode(json)
     }
@@ -27,7 +27,7 @@ public func decodeData<T: Decodable>(_ data: Data?) -> T? where T == T.DecodedTy
 ///
 /// - parameter JSON: data
 /// - returns: An array containing the decoded objects
-public func decodeData<T: Decodable>(_ data: Data?) -> [T]? where T == T.DecodedType {
+public func decodeData<T: Argo.Decodable>(_ data: Data?) -> [T]? where T == T.DecodedType {
     if let json = JSONWithData(data) {
         return decode(json)
     }
@@ -42,7 +42,7 @@ public func decodeData<T: Decodable>(_ data: Data?) -> [T]? where T == T.Decoded
 ///
 /// - parameter JSON: data
 /// - returns: An instance of the `Decoded` type
-public func decodeData<T: Decodable>(_ data: Data?) -> Decoded<T>? where T == T.DecodedType {
+public func decodeData<T: Argo.Decodable>(_ data: Data?) -> Decoded<T>? where T == T.DecodedType {
     if let json = JSONWithData(data) {
         return decode(json)
     }
@@ -54,7 +54,7 @@ public func decodeData<T: Decodable>(_ data: Data?) -> Decoded<T>? where T == T.
 ///
 /// - parameter JSON: data
 /// - returns: An instance of the `Decoded` type
-public func decodeData<T: Decodable>(_ data: Data?) -> Decoded<[T]>? where T == T.DecodedType {
+public func decodeData<T: Argo.Decodable>(_ data: Data?) -> Decoded<[T]>? where T == T.DecodedType {
     if let json = JSONWithData(data) {
         return decode(json)
     }

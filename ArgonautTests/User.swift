@@ -20,7 +20,7 @@ class User: NSObject {
     }
 }
 
-extension User: Decodable {
+extension User: Argo.Decodable {
     class func create(_ name: String) -> User {
         return self.init(name: name)
     }

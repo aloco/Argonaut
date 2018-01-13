@@ -38,13 +38,14 @@ private func result<T>(_ decoded: Decoded<T>) -> Result<T, ArgonautError> {
     }
 }
 
-extension SignalProtocol where Value == Any {
+
+extension Signal where Value == Any {
 
     /// Maps the given JSON object within the stream to an object of given classType
     ///
     /// - parameter classType: The type of the object that should be returned
     /// - returns: A new Signal emitting the decoded object
-    public func mapToType<X: Decodable>(_ classType: X.Type, rootKey: String? = nil) -> Signal<X, ArgonautError> where X == X.DecodedType {
+    public func mapToType<X: Argo.Decodable>(_ classType: X.Type, rootKey: String? = nil) -> Signal<X, ArgonautError> where X == X.DecodedType {
         return mapError { ArgonautError.underlying($0) }
             .attemptMap { object in
                 let decoded: Decoded<X>
@@ -57,12 +58,12 @@ extension SignalProtocol where Value == Any {
                 return result(decoded)
             }
     }
-    
+
     /// Maps the given JSON object array within the stream to an array of objects of the given classType
     ///
     /// - parameter classType: The type of the array that should be returned
     /// - returns: A new Signal emitting an array of decoded objects
-    public func mapToTypeArray<X: Decodable>(_ classType: X.Type, rootKey: String? = nil) -> Signal<[X], ArgonautError> where X == X.DecodedType {
+    public func mapToTypeArray<X: Argo.Decodable>(_ classType: X.Type, rootKey: String? = nil) -> Signal<[X], ArgonautError> where X == X.DecodedType {
         return mapError { ArgonautError.underlying($0) }
             .attemptMap { object in
                 let decoded: Decoded<[X]>
@@ -74,25 +75,26 @@ extension SignalProtocol where Value == Any {
                 return result(decoded)
             }
     }
-    
+
 }
 
-extension SignalProducerProtocol where Value == Any {
-    
+extension SignalProducer where Value == Any {
+
     /// Maps the given JSON object within the stream to an object of given classType
     ///
     /// - parameter classType: The type of the object that should be returned
     /// - returns: A new Signal emitting the decoded object
-    public func mapToType<X: Decodable>(_ classType: X.Type, rootKey: String? = nil) -> SignalProducer<X, ArgonautError> where X == X.DecodedType {
+    public func mapToType<X: Argo.Decodable>(_ classType: X.Type, rootKey: String? = nil) -> SignalProducer<X, ArgonautError> where X == X.DecodedType {
         return lift { $0.mapToType(classType, rootKey: rootKey) }
     }
-    
+
     /// Maps the given JSON object array within the stream to an array of objects of the given classType
     ///
     /// - parameter classType: The type of the array that should be returned
     /// - returns: A new Signal emitting an array of decoded objects
-    public func mapToTypeArray<X: Decodable>(_ classType: X.Type, rootKey: String? = nil) -> SignalProducer<[X], ArgonautError> where X == X.DecodedType {
+    public func mapToTypeArray<X: Argo.Decodable>(_ classType: X.Type, rootKey: String? = nil) -> SignalProducer<[X], ArgonautError> where X == X.DecodedType {
         return lift { $0.mapToTypeArray(classType, rootKey: rootKey) }
     }
-    
+
 }
+
